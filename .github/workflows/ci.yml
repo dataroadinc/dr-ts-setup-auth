@@ -48,10 +48,7 @@ jobs:
     publish:
         needs: test
         runs-on: ubuntu-latest
-        # Note: secrets.NPM_TOKEN is only available in GitHub Actions runtime
-        if:
-            github.event_name == 'push' && github.ref == 'refs/heads/main' &&
-            secrets.NPM_TOKEN != ''
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         steps:
             - uses: actions/checkout@v4
               with:
