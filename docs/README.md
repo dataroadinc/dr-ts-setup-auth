@@ -1,7 +1,7 @@
 # Documentation
 
-This directory contains comprehensive documentation for the `dr-ts-setup-auth`
-project.
+This directory contains comprehensive documentation for the
+`@dataroadinc/setup-auth` project.
 
 ## Available Guides
 

@@ -1,8 +1,8 @@
 # Versioning
 
-This project uses the `dr-ts-versioning` package for stateless versioning. This
-system generates changelogs dynamically during CI/CD builds without committing
-`CHANGELOG.md` to git.
+This project uses the `@dataroadinc/versioning` package for stateless
+versioning. This system generates changelogs dynamically during CI/CD builds
+without committing `CHANGELOG.md` to git.
 
 ## Overview
 
