@@ -4,5 +4,15 @@
             "path": ".",
         },
     ],
-    "settings": {},
+    "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": "explicit",
+        },
+        "prettier.requireConfig": true,
+        "prettier.useEditorConfig": false,
+        "prettier.configPath": "prettier.config.js",
+    },
 }

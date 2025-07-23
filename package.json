@@ -16,8 +16,8 @@
         "lint:md": "markdownlint '**/*.md'",
         "lint:md:fix": "markdownlint '**/*.md' --fix",
         "fix:md": "./fix-markdown.sh",
-        "format": "prettier --write .",
-        "format:check": "prettier --check .",
+        "format": "prettier --write . --config prettier.config.js",
+        "format:check": "prettier --check . --config prettier.config.js",
         "test": "vitest"
     },
     "description": "Authentication setup utilities for various cloud platforms and OAuth providers",
