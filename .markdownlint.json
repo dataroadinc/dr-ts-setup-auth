@@ -1,0 +1,31 @@
+{
+    "MD033": {
+        "allowed_elements": ["Image"]
+    },
+    "MD013": {
+        "line_length": 80,
+        "code_blocks": false,
+        "tables": false,
+        "html": false
+    },
+    "MD022": {
+        "lines_above": 1,
+        "lines_below": 1
+    },
+    "MD032": {
+        "list_indent": 2
+    },
+    "MD031": {
+        "start_of_file": false,
+        "end_of_file": false
+    },
+    "MD026": false,
+    "MD024": false,
+    "MD040": false,
+    "MD007": {
+        "indent": 2
+    },
+    "MD029": false,
+    "MD034": false,
+    "MD047": false
+}

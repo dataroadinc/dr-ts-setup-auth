@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Rules for executing commands
+
+## CRITICAL: FORBIDDEN COMMANDS
+
+- NEVER run `pnpm dev` - The dev server is ALWAYS already running at port 3000
+- NEVER run `npm dev`, `yarn dev`, `next dev`, or any other dev server variant
+- NEVER run `git commit` unless explicitly requested with exact words "please commit"
+- NEVER run `git push` under ANY circumstances
+- NEVER run any command with `--no-verify` flag
+
+## IMPORTANT: Before executing ANY command, you MUST:
+
+1. Check this list of forbidden commands
+2. Assume dev server is already running
+3. Use read-only commands to check status instead of starting processes

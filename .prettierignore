@@ -1,0 +1,47 @@
+# Ignore MDX files to prevent formatting conflicts with MDX parser requirements
+*.mdx
+
+# Node modules
+node_modules/
+
+# Build output
+.next/
+out/
+dist/
+
+# Cache
+.turbo/
+
+# Coverage
+coverage/
+
+# Logs
+*.log
+
+# dependencies
+.pnpm-store/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# misc
+.DS_Store
+*.pem
+.env*
+!.env.example
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# vercel
+.vercel
+
+# public
+public/ 
+
+# test output
+tmp/ 

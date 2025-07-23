@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+echo "Running commitlint on commit message..."
+pnpm exec commitlint --edit "${1}" 

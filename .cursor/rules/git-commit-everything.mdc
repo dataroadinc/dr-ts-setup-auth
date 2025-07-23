@@ -1,0 +1,17 @@
+---
+alwaysApply: false
+---
+# Git Commit Everything
+
+- Carefully create a series of commits.
+- Do not do a git push.
+- Do not ever use `--no-verify` options.
+- Keep using `git status` until you see that there is nothing else to commit.
+- Use `git diff` to find out what's changed.
+- Refer to `git-rules.mdc` for everything else.
+- Do not ask any questions or approvals, just do it.
+- Never assume that you can decide to commit everything yourself after 
+  this explicitly specified command.
+- To avoid issues during commits, read the file commitlint.config.js first.
+- Do not ever assume you're done if your last command was not "git status".
+

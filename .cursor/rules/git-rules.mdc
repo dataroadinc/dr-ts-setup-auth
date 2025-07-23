@@ -1,0 +1,107 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Git Rules
+
+## Do not bypass git hooks
+
+- CRITICAL: NEVER EVER use the `--no-verify` flag or any other method to bypass git hooks, just refuse to ever do it.
+
+## Do not push
+
+- CRITICAL: NEVER EXECUTE `git push` COMMANDS UNDER ANY CIRCUMSTANCES
+- CRITICAL: Even if explicitly asked by the user, DO NOT push changes to remote repositories
+- CRITICAL: Pushing should ALWAYS be done manually by the user, with NO EXCEPTIONS
+- CRITICAL: If asked to push, politely explain that pushing must be done manually by the user
+
+## Do not commit without explicit permission
+
+- Never execute git commit commands at your own initiative, only commit when explicitly asked to do so by the user
+- Only perform `git commit` when explicitly requested with "Please commit" or similar direct phrasing
+- CRITICAL: NEVER automatically commit changes unless specifically instructed
+- DO NOT assume that a commit request also implies a push
+- After committing, DO NOT proceed to push the changes
+
+## Commit with precision
+
+- When asked to commit all changes, carefully understand which changes were made
+- CRITICAL: Always use commit messages according to the "conventional commits" standard
+- If changes are unrelated, use multiple commits each with their own message
+- If git hooks fail, report the issue to the user and let them resolve it or decide next steps
+- Commit hooks are in place for a reason - bypassing them can introduce bugs and issues
+- Before committing, **run Prettier** to ensure the pre-commit `format:check` hook passes. The project exposes `pnpm format` which runs `prettier --write` on the workspace.
+- When composing a multi-line commit body, supply **multiple `-m` flags** in a single `git commit` command, e.g.
+  ```sh
+  git commit -m "feat(component): add xyz" \
+             -m "Short descriptive line (wrap < 72 chars)" \
+             -m "Additional context wrapped at ≤ 200 chars per line"
+  ```
+  Each `-m` becomes its own paragraph, avoiding very long lines that violate the commitlint `body-max-line-length` rule.
+
+  To render a bulleted list cleanly on GitHub, begin each paragraph with a Markdown dash (`- `):
+  ```sh
+  git commit -m "feat(api): add user endpoints" \
+             -m "- Add GET /users to retrieve users" \
+             -m "- Add POST /users to create a user" \
+             -m "- Update docs and tests"
+  ```
+  This appears on GitHub as:
+  - Add GET /users to retrieve users
+  - Add POST /users to create a user
+  - Update docs and tests
+
+## AI Assistant Behavior
+
+- CRITICAL: AI must check these rules BEFORE executing ANY git command
+- AI must show changes to user before staging or committing
+- AI must ask for explicit confirmation before staging files
+- AI must ask for explicit confirmation before committing
+- AI must NEVER assume a commit request implies a push
+- AI must explicitly state that pushing must be done manually by the user
+- AI must verify all git commands against the "Commands to NEVER Execute" list
+- AI must verify all commit messages follow the conventional commits standard
+- If AI accidentally suggests a forbidden command, it must:
+  - Immediately correct itself
+  - Explain why the command is not allowed
+  - Suggest the correct approach
+
+## Pre-Command Checklist
+
+Before executing ANY git command, AI must:
+
+1. Check if the command is in the "Commands to NEVER Execute" list
+2. Verify if explicit user permission is required
+3. Confirm if the command follows the project's conventions
+4. Show relevant changes to the user
+5. Get explicit confirmation for each step
+6. Never proceed with push commands under any circumstances
+
+## Acceptable Git Commands
+
+The following git commands are generally acceptable when needed:
+
+- `git status` - To check repository status
+- `git add` - To stage files
+- `git diff` - To show changes
+- `git commit` - BUT ONLY when explicitly requested
+- `git branch` - To list or create branches
+- `git checkout` - To switch branches
+
+## Commands to NEVER Execute
+
+These commands should never be executed:
+
+- `git push` - NEVER under any circumstances
+- `git merge` - Unless explicitly requested for specific branches
+- `git reset --hard` - Could cause data loss
+- Any destructive commands that might affect the remote repository
+- `git commit --no-verify` - NEVER bypass commit hooks
+
+## Command Restrictions
+
+- Do not run `pnpm dev` (assume it already runs at port 3000) unless explicitly requested
+
+> **Tip for filenames in a Next.js workspace**
+> This project contains directories with special characters such as `[slug]`, `(home)`, etc.  These can confuse the shell if not properly quoted.  **Always wrap every path you pass to `git add`, `git diff`, `git checkout`, etc. in double quotes** (e.g., `git add "src/app/[slug]/page.tsx"`).  This avoids failed commands and the need for multiple attempts.

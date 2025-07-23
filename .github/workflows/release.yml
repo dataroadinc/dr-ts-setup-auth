@@ -1,0 +1,50 @@
+name: Tag and Release on PR Merge
+on:
+    pull_request:
+        types: [closed]
+        branches:
+            - main
+permissions:
+    contents: write
+jobs:
+    tag-and-release:
+        if:
+            github.event.pull_request.merged == true &&
+            github.event.pull_request.base.ref == 'main'
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  fetch-tags: true
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "22.x"
+            - name: Install pnpm
+              run: corepack enable && corepack prepare pnpm@10.10.0 --activate
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+            - name: Build
+              run: pnpm run build
+            - name: Update package.json version
+              run: pnpm version:current
+            - name: Generate changelog
+              run: pnpm generate-changelog
+            - name: Get next patch version
+              id: version
+              run: pnpm --reporter=silent next-patch-version >> $GITHUB_OUTPUT
+            - name: Create tag
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git tag v${{ steps.version.outputs.version }}
+                  git push origin v${{ steps.version.outputs.version }}
+            - name: Create GitHub Release
+              uses: softprops/action-gh-release@v2
+              with:
+                  tag_name: v${{ steps.version.outputs.version }}
+                  body_path: CHANGELOG.md
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
