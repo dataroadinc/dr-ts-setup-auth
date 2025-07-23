@@ -1,4 +1,4 @@
-# dr-ts-setup-auth
+# @dataroadinc/setup-auth
 
 Authentication setup utilities for various cloud platforms and OAuth providers.
 This CLI tool helps developers and administrators set up OAuth authentication
@@ -12,18 +12,19 @@ for their applications across multiple cloud providers.
   deployments
 - **Service Account Management**: GCP service account and IAM role setup
 - **Webhook Support**: Automated redirect URL updates via webhooks
-- **Stateless Versioning**: Dynamic changelog generation with `dr-ts-versioning`
+- **Stateless Versioning**: Dynamic changelog generation with
+  `@dataroadinc/versioning`
 
 ## Installation
 
 ```bash
-npm install dr-ts-setup-auth
+npm install @dataroadinc/setup-auth
 ```
 
 or with pnpm:
 
 ```bash
-pnpm add -D dr-ts-setup-auth
+pnpm add -D @dataroadinc/setup-auth
 ```
 
 ## Quick Start

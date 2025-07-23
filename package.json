@@ -1,11 +1,11 @@
 {
-    "name": "dr-ts-setup-auth",
+    "name": "@dataroadinc/setup-auth",
     "version": "0.0.1",
     "type": "module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "bin": {
-        "dr-ts-setup-auth": "dist/index.js"
+        "@dataroadinc/setup-auth": "dist/index.js"
     },
     "scripts": {
         "build": "tsc",
@@ -19,9 +19,9 @@
         "format": "prettier --write . --config prettier.config.js",
         "format:check": "prettier --check . --config prettier.config.js",
         "test": "vitest",
-        "version:current": "node node_modules/dr-ts-versioning/dist/update-package-version.js",
-        "version:next": "node node_modules/dr-ts-versioning/dist/next-patch-version.js",
-        "version:release": "node node_modules/dr-ts-versioning/dist/generate-changelog.js && pnpm run version:current"
+        "version:current": "node node_modules/@dataroadinc/versioning/dist/update-package-version.js",
+        "version:next": "node node_modules/@dataroadinc/versioning/dist/next-patch-version.js",
+        "version:release": "node node_modules/@dataroadinc/versioning/dist/generate-changelog.js && pnpm run version:current"
     },
     "description": "Authentication setup utilities for various cloud platforms and OAuth providers",
     "keywords": [
@@ -72,7 +72,7 @@
         "@typescript-eslint/eslint-plugin": "^8.15.0",
         "@typescript-eslint/parser": "^8.15.0",
         "dotenv-cli": "9.0.0",
-        "dr-ts-versioning": "^0.0.1",
+        "@dataroadinc/versioning": "^0.0.1",
         "eslint": "^9.31.0",
         "eslint-config-prettier": "^10.1.5",
         "eslint-plugin-import": "^2.31.0",
