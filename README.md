@@ -135,8 +135,21 @@ Comprehensive documentation is available in the [`docs/`](docs/) directory:
 
 - **[Development Guide](docs/development.md)** - Complete setup and workflow
 - **[Code Formatting](docs/formatting.md)** - IDE setup and formatting rules
+- **[Markdown Formatting](docs/markdown-formatting.md)** - Documentation
+  standards
 - **[Versioning](docs/versioning.md)** - Stateless versioning with
   `dr-ts-versioning`
+- **[Open Source Release](docs/open-source-release.md)** - Release planning and
+  status
+- **[Vercel Integration](docs/vercel-integration.md)** - Vercel integration
+  details
+- **[GCP Integration](docs/gcp-integration.md)** - Google Cloud Platform
+  integration
+- **[Automation and Testing](docs/automation-testing.md)** - Automation
+  principles and testing
+- **[Authentication and Workflow](docs/authentication-workflow.md)** -
+  Authentication automation
+- **[OAuth Automation](docs/oauth-automation.md)** - OAuth automation details
 
 ## Development
 
