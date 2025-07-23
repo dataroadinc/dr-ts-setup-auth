@@ -33,6 +33,18 @@ class MockGcpCloudCliClient {
           }
         : ""
     }
+    // Check if this is a credentials create command
+    if (args.includes("credentials") && args.includes("create")) {
+      if (args.some(arg => arg.includes("fail"))) {
+        throw new Error("gcloud error: credential creation failed")
+      }
+      return expectJson
+        ? {
+            clientSecret: "mock-client-secret-12345",
+            name: "oauth-clients/credentials/mock-credential-id",
+          }
+        : ""
+    }
     // Check if this is an update command
     if (args.includes("update")) {
       if (args[args.indexOf("update") + 1] === "fail") {
@@ -87,7 +99,7 @@ describe("GcpOAuthWebClientManager Unit Tests", () => {
     manager.cli = new MockGcpCloudCliClient()
     const result = await manager.createClient("Test App", ["https://cb"], [])
     expect(result.clientId).toMatch(/^test-app-\d+$/) // Should be sanitized name with timestamp
-    expect(result.clientSecret).toBe("RETRIEVE_FROM_CONSOLE") // Placeholder for manual retrieval
+    expect(result.clientSecret).toBe("mock-client-secret-12345") // Mock secret from credential creation
   })
 
   it("createClient propagates errors from CLI", async () => {

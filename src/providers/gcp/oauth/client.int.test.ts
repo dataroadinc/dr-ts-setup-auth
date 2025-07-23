@@ -15,19 +15,22 @@ dotenv.config({ path: envPath })
 const projectId = process.env.GCP_OAUTH_PROJECT_ID
 const credentials = process.env.GCP_OAUTH_APPLICATION_CREDENTIALS
 
-if (!projectId || !credentials) {
-  console.warn(
-    `Skipping integration tests: GCP_OAUTH_PROJECT_ID or GCP_OAUTH_APPLICATION_CREDENTIALS not set. Tried loading from: ${envPath}`
-  )
-  process.exit(0)
-}
-
 const uniqueSuffix = Date.now().toString()
 const displayName = `Test OAuth2 Client ${uniqueSuffix}`
 const redirectUris = ["https://example.com/callback"]
 const origins = ["https://example.com"]
 
 describe("GcpOAuthWebClientManager Integration Tests", () => {
+  // Skip all tests if credentials are not available
+  if (!projectId || !credentials) {
+    console.warn(
+      `Skipping integration tests: GCP_OAUTH_PROJECT_ID or GCP_OAUTH_APPLICATION_CREDENTIALS not set. Tried loading from: ${envPath}`
+    )
+    it.skip("createClient creates a new OAuth2 client and returns credentials", async () => {
+      // This test will be skipped
+    })
+    return
+  }
   it("createClient creates a new OAuth2 client and returns credentials", async () => {
     const manager = new GcpOAuthWebClientManager(projectId)
     let clientId: string | undefined
