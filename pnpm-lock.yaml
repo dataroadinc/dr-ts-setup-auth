@@ -63,6 +63,9 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.8.1
         version: 19.8.1
+      '@dataroadinc/versioning':
+        specifier: ^0.0.1
+        version: 0.0.1
       '@eslint/eslintrc':
         specifier: ^3.3.1
         version: 3.3.1
@@ -81,9 +84,6 @@ importers:
       dotenv-cli:
         specifier: 9.0.0
         version: 9.0.0
-      dr-ts-versioning:
-        specifier: ^0.0.1
-        version: 0.0.1
       eslint:
         specifier: ^9.31.0
         version: 9.31.0(jiti@2.5.0)
@@ -215,6 +215,11 @@ packages:
 
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
+
+  '@dataroadinc/versioning@0.0.1':
+    resolution: {integrity: sha512-Kt5iuvPlEQ1k02C1dH+TxtRYFMqE1WSIuusNrNCfh1HBd1dddcNF+Cx0xanNX7+4Xm5h+dBtjyDlPbc/tb8Ekg==}
+    engines: {node: '>=22.0.0', pnpm: '>=10.0.0'}
+    hasBin: true
 
   '@edge-runtime/format@2.2.1':
     resolution: {integrity: sha512-JQTRVuiusQLNNLe2W9tnzBlV/GvSVcozLl4XZHk5swnRZ/v6jp8TqR8P7sqmJsQqblDZ3EztcWmLDbhRje/+8g==}
@@ -1343,11 +1348,6 @@ packages:
   dotenv@17.2.0:
     resolution: {integrity: sha512-Q4sgBT60gzd0BB0lSyYD3xM4YxrXA9y4uBDof1JNYGzOXrQdQ6yX+7XIAqoFOGQFOTK1D3Hts5OllpxMDZFONQ==}
     engines: {node: '>=12'}
-
-  dr-ts-versioning@0.0.1:
-    resolution: {integrity: sha512-lg3kJidYJzTwqTE2pkm+GUJQwPwvbOBtXoxiUUp7EuzjB8kHxDNfJLENDj96IvzKiwrIhbpp7WgGNqXSyqzhgA==}
-    engines: {node: '>=22.0.0', pnpm: '>=10.0.0'}
-    hasBin: true
 
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
@@ -3562,6 +3562,8 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
+  '@dataroadinc/versioning@0.0.1': {}
+
   '@edge-runtime/format@2.2.1': {}
 
   '@edge-runtime/node-utils@2.3.0': {}
@@ -4702,8 +4704,6 @@ snapshots:
   dotenv-expand@10.0.0: {}
 
   dotenv@17.2.0: {}
-
-  dr-ts-versioning@0.0.1: {}
 
   dunder-proto@1.0.1:
     dependencies:
