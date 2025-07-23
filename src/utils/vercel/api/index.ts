@@ -15,6 +15,14 @@ interface VercelProjectsResponse {
   projects: VercelProject[]
 }
 
+interface VercelDeploymentsResponse {
+  deployments: Array<{ url?: string; state?: string }>
+}
+
+interface VercelEnvVariablesResponse {
+  envs: any[]
+}
+
 /**
  * API client implementation using Axios
  */
@@ -169,7 +177,7 @@ export class VercelApiClientImpl implements VercelClientInterface {
       const teamId = await this.getTeamId()
       const endpoint = `/v10/projects?teamId=${teamId}`
 
-      const response = await this.request("GET", endpoint)
+      const response = await this.request<VercelProjectsResponse>("GET", endpoint)
 
       if (response && response.projects) {
         return response.projects.map(
@@ -216,7 +224,7 @@ export class VercelApiClientImpl implements VercelClientInterface {
       // Use the Vercel REST API to list deployments
       const endpoint = `/v6/deployments?projectId=${projectId}&teamId=${teamId}&limit=10`
 
-      const response = await this.request("GET", endpoint)
+      const response = await this.request<VercelDeploymentsResponse>("GET", endpoint)
 
       if (response && response.deployments) {
         return response.deployments
@@ -224,7 +232,7 @@ export class VercelApiClientImpl implements VercelClientInterface {
             (deployment: { url?: string; state?: string }) =>
               deployment.url && deployment.state === "READY"
           )
-          .map((deployment: { url: string }) => `https://${deployment.url}`)
+          .map((deployment) => `https://${deployment.url!}`)
       }
 
       return []
@@ -296,7 +304,7 @@ export class VercelApiClientImpl implements VercelClientInterface {
       const teamId = await this.getTeamId()
       const endpoint = `/v10/projects/${projectId}/env?teamId=${teamId}`
 
-      const response = await this.request("GET", endpoint)
+      const response = await this.request<VercelEnvVariablesResponse>("GET", endpoint)
 
       if (response && response.envs) {
         return response.envs
@@ -451,7 +459,7 @@ export class VercelApiClientImpl implements VercelClientInterface {
   }
 
   async getTeams(): Promise<Array<{ id: string; name: string; slug: string }>> {
-    const response = await this.request("GET", "/v2/teams")
+    const response = await this.request<VercelTeamsResponse>("GET", "/v2/teams")
     if (response && response.teams) {
       return response.teams.map(
         (team: { id: string; name: string; slug: string }) => ({

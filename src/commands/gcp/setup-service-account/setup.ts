@@ -46,6 +46,17 @@ interface GcpServiceAccountKeyResponse {
   privateKeyData?: string
 }
 
+interface GcpServiceAccountResponse {
+  email: string
+  name: string
+  displayName: string
+  description: string
+}
+
+interface GcpServiceAccountKeysResponse {
+  keys?: Array<{ name: string }>
+}
+
 /**
  * Setup a GCP service account that can be used to execute the gcp-setup-oauth command.
  *
@@ -302,8 +313,8 @@ async function _gcpSetupServiceAccount(
           description: serviceAccountDescription,
         },
       }
-    )
-    console.log(`✅ Service account created: ${response.data.email}`)
+    ) as GcpServiceAccountResponse
+    console.log(`✅ Service account created: ${response.email}`)
   } catch (error) {
     let isAlreadyExistsError = false
     // Check if it's our SetupAuthError containing an Axios error with the specific 409 status
@@ -369,7 +380,7 @@ async function _gcpSetupServiceAccount(
       const listResponse = await gcpCallAPI(
         `https://iam.googleapis.com/v1/${keyResourcePathBase}/keys?keyTypes=USER_MANAGED`,
         "GET"
-      )
+      ) as GcpServiceAccountKeysResponse
       existingKeys = listResponse?.keys || [] // Assuming the response has a 'keys' array
       console.log(`Found ${existingKeys.length} existing user-managed key(s).`)
     } catch (listError) {
