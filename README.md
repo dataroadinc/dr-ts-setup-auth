@@ -1,15 +1,32 @@
 # dr-ts-setup-auth
 
 Authentication setup utilities for various cloud platforms and OAuth providers.
+This CLI tool helps developers and administrators set up OAuth authentication
+for their applications across multiple cloud providers.
+
+## Features
+
+- **Multi-Platform Support**: Google Cloud Platform, Azure AD, GitHub OAuth
+- **Automated Setup**: Streamlined OAuth client creation and configuration
+- **Vercel Integration**: Automatic redirect URL management for Vercel
+  deployments
+- **Service Account Management**: GCP service account and IAM role setup
+- **Webhook Support**: Automated redirect URL updates via webhooks
+- **Stateless Versioning**: Dynamic changelog generation with `dr-ts-versioning`
 
 ## Installation
 
 ```bash
 npm install dr-ts-setup-auth
-
 ```
 
-## Usage
+or with pnpm:
+
+```bash
+pnpm add -D dr-ts-setup-auth
+```
+
+## Quick Start
 
 ### Development
 
@@ -19,9 +36,12 @@ For development, you can run the CLI directly using `tsx`:
 # Install dependencies
 pnpm install
 
+# Set up environment variables
+cp env.local.example .env.local
+# Edit .env.local with your configuration
+
 # Run the CLI
 pnpm start --help
-
 ```
 
 ### Production
@@ -35,7 +55,6 @@ npm install -g tsx
 
 # Run the CLI
 tsx src/index.js --help
-
 ```
 
 Alternatively, you can build and run the compiled version, but you'll need to
@@ -47,7 +66,6 @@ pnpm build
 
 # Run with path mapping (requires tsconfig-paths)
 npx tsconfig-paths/register node dist/index.js --help
-
 ```
 
 ## Configuration
@@ -110,6 +128,15 @@ Many additional variables are available for customization. See
 - `setup-webhook` - Set up a webhook for automatic redirect URL updates
 - `login` - Perform cloud provider login (GCP user, ADC, service account, Azure,
   AWS, etc.)
+
+## Documentation
+
+Comprehensive documentation is available in the [`docs/`](docs/) directory:
+
+- **[Development Guide](docs/development.md)** - Complete setup and workflow
+- **[Code Formatting](docs/formatting.md)** - IDE setup and formatting rules
+- **[Versioning](docs/versioning.md)** - Stateless versioning with
+  `dr-ts-versioning`
 
 ## Development
 
