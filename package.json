@@ -18,7 +18,7 @@
         "fix:md": "./fix-markdown.sh",
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "test": "node --test"
+        "test": "vitest"
     },
     "description": "Authentication setup utilities for various cloud platforms and OAuth providers",
     "keywords": [
