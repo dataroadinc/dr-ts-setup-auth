@@ -65,7 +65,9 @@ export async function gcpCallAPI(
       }
 
       // Check if it's the ALREADY_EXISTS error before logging details
-      const responseData = error.response?.data as { error?: { status?: string } } | undefined
+      const responseData = error.response?.data as
+        | { error?: { status?: string } }
+        | undefined
       const isAlreadyExists =
         statusCode === 409 && responseData?.error?.status === "ALREADY_EXISTS"
 

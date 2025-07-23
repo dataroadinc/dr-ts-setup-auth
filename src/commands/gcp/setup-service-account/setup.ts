@@ -303,7 +303,7 @@ async function _gcpSetupServiceAccount(
     "Updates OAuth redirect URIs for Vercel deployments"
   const serviceAccountEmail = `${serviceAccountId}@${options.gcpOauthProjectId!}.iam.gserviceaccount.com`
   try {
-    const response = await gcpCallAPI(
+    const response = (await gcpCallAPI(
       `https://iam.googleapis.com/v1/projects/${options.gcpOauthProjectId}/serviceAccounts`,
       "POST",
       {
@@ -313,7 +313,7 @@ async function _gcpSetupServiceAccount(
           description: serviceAccountDescription,
         },
       }
-    ) as GcpServiceAccountResponse
+    )) as GcpServiceAccountResponse
     console.log(`✅ Service account created: ${response.email}`)
   } catch (error) {
     let isAlreadyExistsError = false
@@ -377,10 +377,10 @@ async function _gcpSetupServiceAccount(
     console.log("Listing existing user-managed keys...")
     let existingKeys: { name: string }[] = []
     try {
-      const listResponse = await gcpCallAPI(
+      const listResponse = (await gcpCallAPI(
         `https://iam.googleapis.com/v1/${keyResourcePathBase}/keys?keyTypes=USER_MANAGED`,
         "GET"
-      ) as GcpServiceAccountKeysResponse
+      )) as GcpServiceAccountKeysResponse
       existingKeys = listResponse?.keys || [] // Assuming the response has a 'keys' array
       console.log(`Found ${existingKeys.length} existing user-managed key(s).`)
     } catch (listError) {
