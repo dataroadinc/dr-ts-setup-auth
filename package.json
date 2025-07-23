@@ -19,9 +19,16 @@
         "format": "prettier --write . --config prettier.config.js",
         "format:check": "prettier --check . --config prettier.config.js",
         "test": "vitest",
+        "test:watch": "vitest",
+        "prebuild": "pnpm run clean",
+        "prepublishOnly": "pnpm run build",
+        "prepare": "husky",
         "version:current": "node node_modules/@dataroadinc/versioning/dist/update-package-version.js",
         "version:next": "node node_modules/@dataroadinc/versioning/dist/next-patch-version.js",
-        "version:release": "node node_modules/@dataroadinc/versioning/dist/generate-changelog.js && pnpm run version:current"
+        "version:release": "node node_modules/@dataroadinc/versioning/dist/generate-changelog.js && pnpm run version:current",
+        "generate-changelog": "node node_modules/@dataroadinc/versioning/dist/generate-changelog.js",
+        "next-patch-version": "node node_modules/@dataroadinc/versioning/dist/next-patch-version.js",
+        "update-package-version": "node node_modules/@dataroadinc/versioning/dist/update-package-version.js"
     },
     "description": "Authentication setup utilities for various cloud platforms and OAuth providers",
     "keywords": [

@@ -22,16 +22,13 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: "22.x"
+                  registry-url: "https://registry.npmjs.org"
             - name: Install pnpm
               run: corepack enable && corepack prepare pnpm@10.10.0 --activate
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-            - name: Build
+            - name: Build project
               run: pnpm run build
-            - name: Update package.json version
-              run: pnpm version:current
-            - name: Generate changelog
-              run: pnpm generate-changelog
             - name: Get next patch version
               id: version
               run: pnpm --reporter=silent next-patch-version >> $GITHUB_OUTPUT
@@ -41,6 +38,16 @@ jobs:
                   git config user.email "github-actions[bot]@users.noreply.github.com"
                   git tag v${{ steps.version.outputs.version }}
                   git push origin v${{ steps.version.outputs.version }}
+            - name: Update package.json version
+              run: pnpm version:current
+            - name: Rebuild with new version number in package.json
+              run: pnpm run build
+            - name: Generate changelog
+              run: pnpm run generate-changelog
+            - name: Publish to NPM
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Create GitHub Release
               uses: softprops/action-gh-release@v2
               with:
