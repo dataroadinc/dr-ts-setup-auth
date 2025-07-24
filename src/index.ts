@@ -128,3 +128,6 @@ await addCommandUpdateRedirectUrls(program)
 
 // Parse and execute
 await program.parseAsync()
+
+// Export the programmatic API for use by other programs
+export * from "./api/index.js"
