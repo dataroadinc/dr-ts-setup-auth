@@ -1,20 +1,20 @@
 import fs from "fs/promises" // Needed for file operations
 import path from "path" // Needed for path operations
-import { gcpCallAPI } from "@/providers/gcp/api-call.js"
+import { gcpCallAPI } from "../../../providers/gcp/api-call.js"
 // Import the Brand client
-import { GcpOAuthBrandClient } from "@/providers/gcp/brand.js"
-import { GcpCloudCliClient } from "@/providers/gcp/cloud-cli-client.js"
-import { GcpIdentityFactory } from "@/providers/gcp/creds/identity.js"
-import { BACKOFF_OPTIONS } from "@/providers/gcp/iam/base-iam.js" // For retry options
+import { GcpOAuthBrandClient } from "../../../providers/gcp/brand.js"
+import { GcpCloudCliClient } from "../../../providers/gcp/cloud-cli-client.js"
+import { GcpIdentityFactory } from "../../../providers/gcp/creds/identity.js"
+import { BACKOFF_OPTIONS } from "../../../providers/gcp/iam/base-iam.js" // For retry options
 
 // Import constants from central file
 import {
   PROJECT_ROLES,
   REQUIRED_SERVICES,
-} from "@/providers/gcp/iam/constants.js"
-import { GcpOrganizationManager } from "@/providers/gcp/organization.js"
-import { GcpOrgPolicyManager } from "@/providers/gcp/orgpolicy/index.js" // Org policy manager
-import { GcpProjectManager } from "@/providers/gcp/project/index.js"
+} from "../../../providers/gcp/iam/constants.js"
+import { GcpOrganizationManager } from "../../../providers/gcp/organization.js"
+import { GcpOrgPolicyManager } from "../../../providers/gcp/orgpolicy/index.js" // Org policy manager
+import { GcpProjectManager } from "../../../providers/gcp/project/index.js"
 import {
   enforceUserDomainOrFail,
   GCP_OAUTH_APPLICATION_CREDENTIALS,
@@ -22,9 +22,9 @@ import {
   getAdcEmailOrNull,
   printGcloudAndAdcAccounts,
   updateOrAddEnvVariable,
-} from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
-import { sleep, waitForIamPropagation } from "@/utils/sleep.js" // Import sleep and waitForIamPropagation utilities
+} from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
+import { sleep, waitForIamPropagation } from "../../../utils/sleep.js" // Import sleep and waitForIamPropagation utilities
 import { OrganizationsClient } from "@google-cloud/resource-manager" // Needed for Org Policy Manager
 import { ServiceUsageClient } from "@google-cloud/service-usage" // Import ServiceUsageClient
 import axios from "axios"

@@ -5,8 +5,8 @@
 import {
   GCP_OAUTH_PROJECT_ID,
   GCP_OAUTH_QUOTA_PROJECT_ID,
-} from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
+} from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import { ProjectsClient, protos } from "@google-cloud/resource-manager"
 import { GoogleAuth } from "google-auth-library"
 import { GcpAuthenticatedIdentity } from "../creds/identity.js"

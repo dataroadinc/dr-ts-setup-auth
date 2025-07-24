@@ -2,7 +2,7 @@ import {
   GCP_OAUTH_ALLOWED_DOMAINS,
   GCP_OAUTH_CLIENT_ID,
   GCP_OAUTH_CLIENT_SECRET,
-} from "@/utils/env-handler.js"
+} from "../../../utils/env-handler.js"
 
 /**
  * Get existing OAuth credentials from the environment, this function

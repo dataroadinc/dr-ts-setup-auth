@@ -22,7 +22,6 @@ import {
   VERCEL_ACCESS_TOKEN,
   VERCEL_PROJECT_NAME,
 } from "./utils/env-handler.js"
-import "./utils/tsconfig-paths-bootstrap.js"
 
 process.on("unhandledRejection", (reason, promise) => {
   console.error("Unhandled Rejection at:", promise, "reason:", reason)
@@ -101,14 +100,31 @@ program
     `NextAuth URL, defaults to environment variable ${NEXTAUTH_URL}`,
     process.env.NEXTAUTH_URL
   )
-await addCommandGcpSetupServiceAccount(program)
-await addCommandGcpSetupOAuth(program)
-await addCommandGitHubSetupAuth(program)
-await addCommandAzureSetupOAuth(program)
-await addCommandGcpView(program)
-await addCommandUpdateRedirectUrls(program)
-await addCommandVercelSetupPostDeployWebhook(program)
-await addCommandLogin(program)
+  .option(
+    "--deployment-url <url>",
+    "Deployment URL to add to redirect URIs",
+    process.env.VERCEL_URL
+  )
+  .option(
+    "--callback-path <path>",
+    "Custom callback path",
+    "/api/auth/callback"
+  )
+  .option(
+    "--redirect-options <options>",
+    "Redirect URL options as JSON string",
+    "{}"
+  )
 
-// Parse the command line arguments and run the program
-program.parseAsync(process.argv)
+// Add commands
+await addCommandAzureSetupOAuth(program)
+await addCommandGcpSetupOAuth(program)
+await addCommandGcpSetupServiceAccount(program)
+await addCommandGcpView(program)
+await addCommandGitHubSetupAuth(program)
+await addCommandLogin(program)
+await addCommandVercelSetupPostDeployWebhook(program)
+await addCommandUpdateRedirectUrls(program)
+
+// Parse and execute
+await program.parseAsync()

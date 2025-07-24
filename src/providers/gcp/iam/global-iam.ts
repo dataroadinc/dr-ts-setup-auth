@@ -1,4 +1,4 @@
-import { SetupAuthError } from "@/utils/error.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import { OrganizationsClient } from "@google-cloud/resource-manager"
 import { GcpAuthenticatedIdentity } from "../creds/identity.js"
 import { BaseGcpIamManager } from "./base-iam.js"

@@ -4,9 +4,12 @@
  * `setup-auth gcp-setup-oauth <options>`
  */
 
-import { PlatformType, SetupAuthGlobalOptions } from "@/types/index.js"
-import { EKG_PROJECT_LONG, GCP_OAUTH_BRAND_NAME } from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
+import { PlatformType, SetupAuthGlobalOptions } from "../../../types/index.js"
+import {
+  EKG_PROJECT_LONG,
+  GCP_OAUTH_BRAND_NAME,
+} from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
 
 /**
  * CLI command options for GCP OAuth setup.

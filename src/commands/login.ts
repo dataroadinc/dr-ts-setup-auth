@@ -1,6 +1,6 @@
 import { existsSync } from "fs"
 import { resolve } from "path"
-import { GcpCloudCliClient } from "@/providers/gcp/cloud-cli-client.js"
+import { GcpCloudCliClient } from "../providers/gcp/cloud-cli-client.js"
 import { Command } from "@commander-js/extra-typings"
 
 export async function addCommandLogin(program: Command): Promise<void> {

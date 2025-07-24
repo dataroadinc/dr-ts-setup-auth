@@ -1,24 +1,24 @@
 import {
   GcpAuthenticatedIdentity,
   GcpIdentityFactory,
-} from "@/providers/gcp/creds/identity.js"
+} from "../../../providers/gcp/creds/identity.js"
 import {
   GLOBAL_PERMISSIONS,
   ORGANIZATION_PERMISSIONS,
   PROJECT_PERMISSIONS,
-} from "@/providers/gcp/iam/constants.js"
-import { GcpGlobalIamManager } from "@/providers/gcp/iam/global-iam.js"
-import { GcpOrganizationIamManager } from "@/providers/gcp/iam/organization-iam.js"
-import { GcpProjectIamManager } from "@/providers/gcp/iam/project-iam.js"
-import { GcpOrganizationManager } from "@/providers/gcp/organization.js"
-import { GcpProjectManager } from "@/providers/gcp/project/index.js"
+} from "../../../providers/gcp/iam/constants.js"
+import { GcpGlobalIamManager } from "../../../providers/gcp/iam/global-iam.js"
+import { GcpOrganizationIamManager } from "../../../providers/gcp/iam/organization-iam.js"
+import { GcpProjectIamManager } from "../../../providers/gcp/iam/project-iam.js"
+import { GcpOrganizationManager } from "../../../providers/gcp/organization.js"
+import { GcpProjectManager } from "../../../providers/gcp/project/index.js"
 import {
   enforceUserDomainOrFail,
   getAdcEmailOrNull,
   printGcloudAndAdcAccounts,
-} from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
-import { superJoin } from "@/utils/string.js"
+} from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
+import { superJoin } from "../../../utils/string.js"
 import { Command } from "commander"
 
 interface OAuthClientTableRow {
@@ -48,7 +48,7 @@ interface MissingPermissions {
 /**
  * Display data in a table format
  *
- * TODO: Move this to a utility function in @/utils/table.ts
+ * TODO: Move this to a utility function in utils/table.ts
  *
  * TODO: The computed column width does not work properly when theres's a '❌' or '✅' symbol in the data.
  */

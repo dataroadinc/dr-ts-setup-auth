@@ -1,9 +1,9 @@
 import {
   AuthenticationType,
   GcpAuthenticatedIdentity,
-} from "@/providers/gcp/creds/identity.js"
-import { SetupAuthGlobalOptions } from "@/types/index.js"
-import { SetupAuthError } from "@/utils/error.js"
+} from "../../../providers/gcp/creds/identity.js"
+import { SetupAuthGlobalOptions } from "../../../types/index.js"
+import { SetupAuthError } from "../../../utils/error.js"
 
 export const GCP_VIEW_ITEMS = [
   "project",

@@ -1,10 +1,10 @@
-import { GCPRedirectUrlsOptions } from "@/commands/update-redirect-urls.js"
-import { DEFAULT_CALLBACK_PATHS } from "@/constants/defaults.js"
+import { GCPRedirectUrlsOptions } from "../commands/update-redirect-urls.js"
+import { DEFAULT_CALLBACK_PATHS } from "../constants/defaults.js"
 import {
   OAuthProvider,
   PlatformType,
   RedirectUrlsConfig,
-} from "@/types/index.js"
+} from "../types/index.js"
 
 /**
  * Derive some redirect options from environment variables

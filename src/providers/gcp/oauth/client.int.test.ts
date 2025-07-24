@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest"
 import path from "path"
 import { fileURLToPath } from "url"
-import { SetupAuthError } from "@/utils/error.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import dotenv from "dotenv"
 import { GcpOAuthWebClientManager } from "./client.js"
 

@@ -1,6 +1,6 @@
-import { SetupAuthError } from "@/utils/error.js"
 import { execFile, spawn } from "child_process"
 import { promisify } from "util"
+import { SetupAuthError } from "../../utils/error.js"
 
 const execFileAsync = promisify(execFile)
 
