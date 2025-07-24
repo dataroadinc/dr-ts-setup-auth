@@ -6,18 +6,9 @@
  * relying on CLI commands.
  */
 
-import {
-  OAuthProvider,
-  PlatformType,
-  RedirectUrlsConfig,
-  UpdateResult,
-} from "../types/index.js"
-import {
-  buildRedirectUriList,
-  getRedirectOptions,
-} from "../utils/redirect-urls.js"
+import { OAuthProvider, PlatformType, UpdateResult } from "../types/index.js"
+import { buildRedirectUriList } from "../utils/redirect-urls.js"
 import { GcpOAuthWebClientManager } from "../providers/gcp/oauth/client.js"
-import { GcpIdentityFactory } from "../providers/gcp/creds/identity.js"
 import { SetupAuthError } from "../utils/error.js"
 
 /**
@@ -230,9 +221,7 @@ export class SetupAuthAPI {
       throw new SetupAuthError("GCP project ID is required")
     }
 
-    const identity = await GcpIdentityFactory.createIdentity()
     const oauthClient = new GcpOAuthWebClientManager(
-      identity,
       config.projectConfig.gcpProjectId
     )
 
@@ -277,9 +266,7 @@ export class SetupAuthAPI {
       )
     }
 
-    const identity = await GcpIdentityFactory.createIdentity()
     const oauthClient = new GcpOAuthWebClientManager(
-      identity,
       config.projectConfig.gcpProjectId
     )
 
@@ -295,8 +282,10 @@ export class SetupAuthAPI {
    * Register callback URLs for GitHub
    */
   private async registerGitHubCallbackUrls(
-    config: CallbackUrlConfig,
-    redirectUris: string[]
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _config: CallbackUrlConfig,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _redirectUris: string[]
   ): Promise<CallbackUrlRegistrationResult> {
     // TODO: Implement GitHub OAuth app creation
     throw new SetupAuthError("GitHub OAuth app creation not yet implemented")
@@ -306,8 +295,10 @@ export class SetupAuthAPI {
    * Update callback URLs for GitHub
    */
   private async updateGitHubCallbackUrls(
-    config: CallbackUrlConfig,
-    redirectUris: string[]
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _config: CallbackUrlConfig,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _redirectUris: string[]
   ): Promise<UpdateResult> {
     // TODO: Implement GitHub OAuth app update
     throw new SetupAuthError("GitHub OAuth app update not yet implemented")
@@ -317,8 +308,10 @@ export class SetupAuthAPI {
    * Register callback URLs for Azure
    */
   private async registerAzureCallbackUrls(
-    config: CallbackUrlConfig,
-    redirectUris: string[]
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _config: CallbackUrlConfig,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _redirectUris: string[]
   ): Promise<CallbackUrlRegistrationResult> {
     // TODO: Implement Azure AD app registration
     throw new SetupAuthError("Azure AD app registration not yet implemented")
@@ -328,8 +321,10 @@ export class SetupAuthAPI {
    * Update callback URLs for Azure
    */
   private async updateAzureCallbackUrls(
-    config: CallbackUrlConfig,
-    redirectUris: string[]
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _config: CallbackUrlConfig,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _redirectUris: string[]
   ): Promise<UpdateResult> {
     // TODO: Implement Azure AD app update
     throw new SetupAuthError("Azure AD app update not yet implemented")
@@ -339,8 +334,10 @@ export class SetupAuthAPI {
    * Register callback URLs for LinkedIn
    */
   private async registerLinkedInCallbackUrls(
-    config: CallbackUrlConfig,
-    redirectUris: string[]
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _config: CallbackUrlConfig,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _redirectUris: string[]
   ): Promise<CallbackUrlRegistrationResult> {
     // TODO: Implement LinkedIn OAuth app creation
     throw new SetupAuthError("LinkedIn OAuth app creation not yet implemented")
@@ -350,8 +347,10 @@ export class SetupAuthAPI {
    * Update callback URLs for LinkedIn
    */
   private async updateLinkedInCallbackUrls(
-    config: CallbackUrlConfig,
-    redirectUris: string[]
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _config: CallbackUrlConfig,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _redirectUris: string[]
   ): Promise<UpdateResult> {
     // TODO: Implement LinkedIn OAuth app update
     throw new SetupAuthError("LinkedIn OAuth app update not yet implemented")
@@ -381,6 +380,3 @@ export async function updateCallbackUrls(
 ): Promise<UpdateResult> {
   return SetupAuthAPI.getInstance().updateCallbackUrls(config)
 }
-
-// Export types for external use
-export type { CallbackUrlConfig, CallbackUrlRegistrationResult }
