@@ -1,10 +1,10 @@
-import { GcpIdentityFactory } from "@/providers/gcp/creds/identity.js"
+import { GcpIdentityFactory } from "../../../providers/gcp/creds/identity.js"
 import {
   enforceUserDomainOrFail,
   getAdcEmailOrNull,
   printGcloudAndAdcAccounts,
-} from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
+} from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import { checkOptions, gcpViewOptions } from "./options.js"
 import { GcpOrganizationViewer } from "./view-organization.js"
 import { gcpViewProject } from "./view-project.js"

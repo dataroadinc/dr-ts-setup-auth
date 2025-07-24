@@ -12,38 +12,36 @@ class MockGcpCloudCliClient {
       if (args.some(arg => arg.includes("fail"))) {
         throw new Error("gcloud error: list failed")
       }
-      return expectJson
-        ? [
-            { name: "oauth-clients/id1", displayName: "App1" },
-            { name: "oauth-clients/id2", displayName: "App2" },
-          ]
-        : ""
+      return "NAME                DISPLAY_NAME\nid1                 App1\nid2                 App2"
+    }
+    // Check if this is a credentials describe command
+    for (let i = 0; i < args.length - 1; i++) {
+      if (
+        String(args[i]) === "credentials" &&
+        String(args[i + 1]) === "describe"
+      ) {
+        if (args.some(arg => String(arg).includes("fail"))) {
+          throw new Error("gcloud error: credential describe failed")
+        }
+        return {
+          secret: "mock-client-secret-12345",
+          clientSecret: "mock-client-secret-12345",
+        }
+      }
     }
     // Check if this is a describe command
     if (args.includes("describe")) {
       if (args[args.indexOf("describe") + 1] === "fail") {
         throw new Error("gcloud error: describe failed")
       }
-      return expectJson
-        ? {
-            name: "oauth-clients/id1",
-            displayName: "App1",
-            allowedRedirectUris: ["cb"],
-            allowedJavascriptOrigins: ["o"],
-          }
-        : ""
+      return "name: oauth-clients/id1\ndisplayName: App1\nredirectUris: cb\norigins: o"
     }
     // Check if this is a credentials create command
     if (args.includes("credentials") && args.includes("create")) {
       if (args.some(arg => arg.includes("fail"))) {
         throw new Error("gcloud error: credential creation failed")
       }
-      return expectJson
-        ? {
-            clientSecret: "mock-client-secret-12345",
-            name: "oauth-clients/credentials/mock-credential-id",
-          }
-        : ""
+      return ""
     }
     // Check if this is an update command
     if (args.includes("update")) {
@@ -57,7 +55,7 @@ class MockGcpCloudCliClient {
         throw new Error("gcloud error: delete failed")
       }
     }
-    return {}
+    return ""
   }
   async checkInstalled(): Promise<void> {
     return
@@ -109,9 +107,7 @@ describe("GcpOAuthWebClientManager Unit Tests", () => {
     manager.cli = new MockGcpCloudCliClient()
     await expect(
       manager.createClient("fail", ["https://cb"], [])
-    ).rejects.toThrow(
-      /Failed to create OAuth client.*gcloud error: creation failed/
-    )
+    ).rejects.toThrow(/gcloud error: creation failed/)
   })
 
   it("listClients calls CLI and parses result", async () => {

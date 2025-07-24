@@ -1,5 +1,5 @@
 import axios from "axios"
-import { SetupAuthError } from "@/utils/error.js"
+import { SetupAuthError } from "../../error.js"
 import {
   VercelClientInterface,
   VercelEnvVariable,

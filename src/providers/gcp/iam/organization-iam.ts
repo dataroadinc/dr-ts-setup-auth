@@ -1,5 +1,5 @@
-import { SetupAuthError } from "@/utils/error.js"
-import { superJoin } from "@/utils/string.js"
+import { SetupAuthError } from "../../../utils/error.js"
+import { superJoin } from "../../../utils/string.js"
 import { OrganizationsClient } from "@google-cloud/resource-manager"
 import { backOff } from "exponential-backoff"
 import { GcpAuthenticatedIdentity } from "../creds/identity.js"

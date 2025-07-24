@@ -18,7 +18,7 @@
  * - Must result in a complete, working setup or clear error message
  */
 
-import { hookSaveEnvironmentVariables } from "@/utils/env-handler.js"
+import { hookSaveEnvironmentVariables } from "../../../utils/env-handler.js"
 import { Command } from "@commander-js/extra-typings"
 import { GcpSetupOAuthOptions } from "./options.js"
 import { gcpSetupOAuth } from "./setup.js"

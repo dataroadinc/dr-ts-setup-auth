@@ -7,7 +7,7 @@
  *       For example, for a vercel project, we would use something like
  *       `.env.vercel.<production|preview|development>` etc.
  */
-import { GcpCloudCliClient } from "@/providers/gcp/cloud-cli-client.js"
+import { GcpCloudCliClient } from "../providers/gcp/cloud-cli-client.js"
 import { config } from "dotenv"
 import * as fs from "fs/promises"
 import * as path from "path"

@@ -1,5 +1,5 @@
-import { GcpAuthenticatedIdentity } from "@/providers/gcp/creds/identity.js"
-import { SetupAuthError } from "@/utils/error.js"
+import { GcpAuthenticatedIdentity } from "../../../providers/gcp/creds/identity.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import { gcpViewOptions } from "./options.js"
 
 export async function gcpViewServiceAccount(

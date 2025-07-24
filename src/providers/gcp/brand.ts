@@ -1,11 +1,14 @@
 /**
  * This file is using the @google-cloud/iap package, do NOT revert back to the googleapis package.
  */
-import { GcpAuthenticatedIdentity } from "@/providers/gcp/creds/identity.js"
-import { EKG_PROJECT_LONG, GCP_OAUTH_BRAND_NAME } from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
 import { IdentityAwareProxyOAuthServiceClient, protos } from "@google-cloud/iap"
 import { backOff } from "exponential-backoff"
+import {
+  EKG_PROJECT_LONG,
+  GCP_OAUTH_BRAND_NAME,
+} from "../../utils/env-handler.js"
+import { SetupAuthError } from "../../utils/error.js"
+import { GcpAuthenticatedIdentity } from "./creds/identity.js"
 import { BACKOFF_OPTIONS } from "./iam/base-iam.js"
 
 // Remove unused interface

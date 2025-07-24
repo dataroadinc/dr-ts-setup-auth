@@ -1,12 +1,12 @@
-import { gcpCheckOauthOrganizationId } from "@/providers/gcp/organization.js"
-import { gcpCheckOauthProjectId } from "@/providers/gcp/project/index.js"
-import { SetupAuthGlobalOptions } from "@/types/index.js"
+import { gcpCheckOauthOrganizationId } from "../../../providers/gcp/organization.js"
+import { gcpCheckOauthProjectId } from "../../../providers/gcp/project/index.js"
+import { SetupAuthGlobalOptions } from "../../../types/index.js"
 import {
   GCP_OAUTH_ORGANIZATION_ID,
   GCP_OAUTH_PROJECT_ID,
   updateOrAddEnvVariable,
-} from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
+} from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
 
 /**
  * CLI command options for GCP service account setup.

@@ -1,5 +1,5 @@
-import { GCP_OAUTH_ORGANIZATION_ID } from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
+import { GCP_OAUTH_ORGANIZATION_ID } from "../../utils/env-handler.js"
+import { SetupAuthError } from "../../utils/error.js"
 import { OrganizationsClient, protos } from "@google-cloud/resource-manager"
 import { GcpAuthenticatedIdentity } from "./creds/identity.js"
 import { GcpOrganizationIamManager } from "./iam/organization-iam.js"

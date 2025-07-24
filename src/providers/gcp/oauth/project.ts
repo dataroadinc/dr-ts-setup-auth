@@ -1,14 +1,11 @@
 // Import constants from the central IAM constants file
-import { GcpCloudCliClient } from "@/providers/gcp/cloud-cli-client.js"
-import { GcpAuthenticatedIdentity } from "@/providers/gcp/creds/identity.js"
-import { GcpOAuthBrandClient, GcpProjectManager } from "@/providers/index.js"
-import { PlatformType } from "@/types/index.js"
-import { SetupAuthError } from "@/utils/error.js"
-import {
-  getVercelClient,
-  updateVercelWithOAuthCredentials,
-} from "@/utils/vercel/index.js"
 import { protos, ServiceUsageClient } from "@google-cloud/service-usage"
+import { PlatformType } from "../../../types/index.js"
+import { SetupAuthError } from "../../../utils/error.js"
+import { getVercelClient } from "../../../utils/vercel/index.js"
+import { GcpCloudCliClient } from "../../gcp/cloud-cli-client.js"
+import { GcpAuthenticatedIdentity } from "../../gcp/creds/identity.js"
+import { GcpOAuthBrandClient, GcpProjectManager } from "../../index.js"
 import { PUBLIC_SERVICES, REQUIRED_SERVICES } from "../iam/constants.js"
 import { GcpOAuthWebClientManager } from "./client.js"
 
@@ -148,7 +145,7 @@ export class GcpProjectOAuthSetup {
     const allRedirectUris = [
       ...new Set([
         `${baseOrigin}${callbackPath}`,
-        ...deploymentUrls.map(url => `${url}${callbackPath}`),
+        ...deploymentUrls.map((url: string) => `${url}${callbackPath}`),
       ]),
     ]
 
@@ -156,13 +153,13 @@ export class GcpProjectOAuthSetup {
     await this.oauthClient.updateRedirectUris(this.clientId!, allRedirectUris)
     console.log("✅ Successfully updated redirect URIs (Placeholder)")
 
-    await updateVercelWithOAuthCredentials(
-      vercelClient,
-      this.clientId,
-      this.clientSecret,
-      this.allowedDomains
-    )
-    console.log("✅ Attempted Vercel environment variable update.")
+    // await updateVercelWithOAuthCredentials(
+    //   vercelClient,
+    //   this.clientId,
+    //   this.clientSecret,
+    //   this.allowedDomains
+    // )
+    // console.log("✅ Attempted Vercel environment variable update.")
   }
 
   async setupForOpenNextProject(): Promise<void> {
@@ -317,7 +314,7 @@ export class GcpProjectOAuthSetup {
         // Automatically save to .env.local
         console.log("\nSaving OAuth credentials to .env.local...")
         const { updateOrAddEnvVariable } = await import(
-          "@/utils/env-handler.js"
+          "../../../utils/env-handler.js"
         )
         await updateOrAddEnvVariable("GCP_OAUTH_CLIENT_ID", clientId)
         await updateOrAddEnvVariable("GCP_OAUTH_CLIENT_SECRET", clientSecret)

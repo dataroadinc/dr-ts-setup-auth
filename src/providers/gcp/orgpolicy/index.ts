@@ -1,6 +1,6 @@
-import { SetupAuthError } from "@/utils/error.js"
+import { SetupAuthError } from "../../../utils/error.js"
 // Import constants from central file
-import { superJoin } from "@/utils/string.js"
+import { superJoin } from "../../../utils/string.js"
 import { OrgPolicyClient, protos } from "@google-cloud/org-policy"
 import { OrganizationsClient } from "@google-cloud/resource-manager" // Import for injection
 import { backOff } from "exponential-backoff"

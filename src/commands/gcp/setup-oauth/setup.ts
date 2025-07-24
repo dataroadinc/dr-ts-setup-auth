@@ -1,13 +1,13 @@
-import { GcpCloudCliClient } from "@/providers/gcp/cloud-cli-client.js"
-import { GcpIdentityFactory } from "@/providers/gcp/creds/identity.js"
-import { GcpProjectOAuthSetup } from "@/providers/gcp/oauth/index.js"
+import { GcpCloudCliClient } from "../../../providers/gcp/cloud-cli-client.js"
+import { GcpIdentityFactory } from "../../../providers/gcp/creds/identity.js"
+import { GcpProjectOAuthSetup } from "../../../providers/gcp/oauth/index.js"
 import {
   enforceUserDomainOrFail,
   GCP_OAUTH_BRAND_RESOURCE_NAME,
   getAdcEmailOrNull,
   printGcloudAndAdcAccounts,
-} from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
+} from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import { checkOptions, GcpSetupOAuthOptions } from "./options.js"
 
 /**

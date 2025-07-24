@@ -1,10 +1,10 @@
-import { GcpAuthenticatedIdentity } from "@/providers/gcp/creds/identity.js"
-import { gcpCheckOauthOrganizationId } from "@/providers/gcp/organization.js"
+import { GcpAuthenticatedIdentity } from "../../../providers/gcp/creds/identity.js"
+import { gcpCheckOauthOrganizationId } from "../../../providers/gcp/organization.js"
 import {
   gcpCheckOauthProjectId,
   GcpProjectManager,
-} from "@/providers/gcp/project/index.js"
-import { SetupAuthError } from "@/utils/error.js"
+} from "../../../providers/gcp/project/index.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import { gcpViewOptions } from "./options.js"
 
 export async function gcpViewProject(

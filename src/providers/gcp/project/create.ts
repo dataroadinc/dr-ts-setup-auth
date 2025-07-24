@@ -1,4 +1,4 @@
-import { SetupAuthError } from "@/utils/error.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import { ProjectsClient } from "@google-cloud/resource-manager"
 import { GcpProjectManager, gcpSetOauthProjectId } from "./index.js"
 

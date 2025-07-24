@@ -14,11 +14,7 @@
         "outDir": "./dist",
         "rootDir": "./src",
         "removeComments": true,
-        "noEmit": false,
-        "baseUrl": "./src",
-        "paths": {
-            "@/*": ["./*"]
-        }
+        "baseUrl": "./src"
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "dist"]

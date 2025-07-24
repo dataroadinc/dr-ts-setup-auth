@@ -1,5 +1,5 @@
 // utils/google-auth.ts
-import { SetupAuthError } from "@/utils/error.js"
+import { SetupAuthError } from "../../utils/error.js"
 import { ProjectsClient } from "@google-cloud/resource-manager"
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -1,6 +1,6 @@
 import fs from "fs/promises"
-import { GCP_OAUTH_APPLICATION_CREDENTIALS } from "@/utils/env-handler.js"
-import { SetupAuthError } from "@/utils/error.js"
+import { GCP_OAUTH_APPLICATION_CREDENTIALS } from "../../../utils/env-handler.js"
+import { SetupAuthError } from "../../../utils/error.js"
 import axios from "axios"
 import {
   AuthClient,

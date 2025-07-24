@@ -1,4 +1,4 @@
-import { SetupAuthError } from "@/utils/error.js"
+import { SetupAuthError } from "../../utils/error.js"
 import axios from "axios"
 import { gcpGetAuthorizationHeader } from "./auth.js"
 
