@@ -14,6 +14,7 @@ for their applications across multiple cloud providers.
 - **Webhook Support**: Automated redirect URL updates via webhooks
 - **Stateless Versioning**: Dynamic changelog generation with
   `@dataroadinc/versioning`
+- **Programmatic API**: Stable, versioned API for callback URL registration
 
 ## Installation
 
@@ -68,6 +69,136 @@ pnpm build
 # Run with path mapping (requires tsconfig-paths)
 npx tsconfig-paths/register node dist/index.js --help
 ```
+
+## Programmatic API
+
+The setup-auth package now provides a stable, programmatic API that allows
+programs to register callback URLs and perform OAuth setup operations without
+relying on CLI commands.
+
+### Basic Usage
+
+```typescript
+import {
+  registerCallbackUrls,
+  updateCallbackUrls,
+  type CallbackUrlConfig,
+} from "@dataroadinc/setup-auth"
+
+// Register callback URLs for a new deployment
+const config: CallbackUrlConfig = {
+  provider: "gcp",
+  platform: "vercel",
+  deploymentUrl: "https://my-app-abc123.vercel.app",
+  callbackPath: "/api/auth/callback/gcp",
+  projectConfig: {
+    gcpProjectId: process.env.GCP_OAUTH_PROJECT_ID!,
+  },
+}
+
+const result = await registerCallbackUrls(config)
+
+if (result.success) {
+  console.log("Callback URLs registered successfully:", result.registeredUrls)
+  console.log("OAuth Client ID:", result.clientId)
+} else {
+  console.error("Registration failed:", result.error)
+}
+```
+
+### Integration Examples
+
+#### Next.js API Route
+
+```typescript
+// pages/api/auth/setup.ts
+import { NextApiRequest, NextApiResponse } from "next"
+import { updateCallbackUrls } from "@dataroadinc/setup-auth"
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" })
+  }
+
+  const config = {
+    provider: "gcp" as const,
+    platform: "vercel" as const,
+    deploymentUrl: process.env.VERCEL_URL,
+    projectConfig: {
+      gcpProjectId: process.env.GCP_OAUTH_PROJECT_ID!,
+    },
+  }
+
+  const result = await updateCallbackUrls(config)
+
+  if (result.success) {
+    res.status(200).json({
+      success: true,
+      redirectUris: result.redirectUris,
+    })
+  } else {
+    res.status(500).json({
+      success: false,
+      error: result.error,
+    })
+  }
+}
+```
+
+#### CI/CD Pipeline
+
+```yaml
+# .github/workflows/deploy.yml
+name: Deploy and Setup Auth
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: pnpm install
+      - name: Deploy to Vercel
+        run: vercel --prod
+      - name: Setup OAuth Callback URLs
+        run: |
+          node -e "
+          const { registerCallbackUrls } = require('@dataroadinc/setup-auth');
+
+          registerCallbackUrls({
+            provider: 'gcp',
+            platform: 'vercel',
+            deploymentUrl: process.env.VERCEL_URL,
+            projectConfig: {
+              gcpProjectId: process.env.GCP_OAUTH_PROJECT_ID
+            }
+          }).then(result => {
+            if (result.success) {
+              console.log('OAuth setup successful:', result.clientId);
+            } else {
+              console.error('OAuth setup failed:', result.error);
+              process.exit(1);
+            }
+          });
+          "
+        env:
+          VERCEL_URL: ${{ steps.deploy.outputs.url }}
+          GCP_OAUTH_PROJECT_ID: ${{ secrets.GCP_OAUTH_PROJECT_ID }}
+```
+
+For complete documentation on the programmatic API, see
+[Programmatic API Guide](docs/programmatic-api.md).
 
 ## Configuration
 
