@@ -7,6 +7,16 @@
     "bin": {
         "@dataroadinc/setup-auth": "dist/index.js"
     },
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./api": {
+            "import": "./dist/api/index.js",
+            "types": "./dist/api/index.d.ts"
+        }
+    },
     "scripts": {
         "build": "tsc",
         "clean": "rm -rf dist",
