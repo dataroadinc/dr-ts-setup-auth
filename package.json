@@ -40,7 +40,7 @@
         "next-patch-version": "node node_modules/@dataroadinc/versioning/dist/next-patch-version.js",
         "update-package-version": "node node_modules/@dataroadinc/versioning/dist/update-package-version.js"
     },
-    "description": "Authentication setup utilities for various cloud platforms and OAuth providers",
+    "description": "CLI tool and programmatic API for automated OAuth setup across cloud platforms",
     "keywords": [
         "authentication",
         "oauth",

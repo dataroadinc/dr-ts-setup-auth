@@ -48,7 +48,7 @@ program
   .showSuggestionAfterError(true)
   .enablePositionalOptions()
   .description(
-    "Authentication setup utilities for cloud platforms and OAuth providers"
+    "CLI tool and programmatic API for automated OAuth setup across cloud platforms"
   )
   .option(
     "--platform <platform>",

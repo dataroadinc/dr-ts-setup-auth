@@ -53,7 +53,7 @@ All company-specific and personal information has been removed:
 
 ## Motivation
 
-This package provides authentication setup utilities for various cloud platforms
+This package provides CLI tool and programmatic API for automated OAuth setup across cloud platforms
 and OAuth providers. It was originally developed for DataRoad's internal use but
 has been prepared for open source release to benefit the broader developer
 community.
