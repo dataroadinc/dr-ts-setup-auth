@@ -1,5 +1,14 @@
 # @dataroadinc/setup-auth
 
+[![npm version](https://img.shields.io/npm/v/@dataroadinc/setup-auth.svg)](https://www.npmjs.com/package/@dataroadinc/setup-auth)
+[![npm downloads](https://img.shields.io/npm/dm/@dataroadinc/setup-auth.svg)](https://www.npmjs.com/package/@dataroadinc/setup-auth)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/dataroadinc/dr-ts-setup-auth/workflows/CI/badge.svg)](https://github.com/dataroadinc/dr-ts-setup-auth/actions?query=workflow%3ACI)
+[![Release](https://github.com/dataroadinc/dr-ts-setup-auth/actions/workflows/release.yml/badge.svg)](https://github.com/dataroadinc/dr-ts-setup-auth/actions/workflows/release.yml)
+[![Node.js Version](https://img.shields.io/node/v/@dataroadinc/setup-auth)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue.svg)](https://www.typescriptlang.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-10.10.0-orange.svg)](https://pnpm.io/)
+
 Authentication setup utilities for various cloud platforms and OAuth providers.
 This CLI tool helps developers and administrators set up OAuth authentication
 for their applications across multiple cloud providers.
