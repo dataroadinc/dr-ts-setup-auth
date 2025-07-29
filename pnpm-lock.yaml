@@ -64,8 +64,8 @@ importers:
         specifier: ^19.8.1
         version: 19.8.1
       '@dataroadinc/versioning':
-        specifier: ^0.0.1
-        version: 0.0.1
+        specifier: 0.0.6
+        version: 0.0.6
       '@eslint/eslintrc':
         specifier: ^3.3.1
         version: 3.3.1
@@ -216,8 +216,8 @@ packages:
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
 
-  '@dataroadinc/versioning@0.0.1':
-    resolution: {integrity: sha512-Kt5iuvPlEQ1k02C1dH+TxtRYFMqE1WSIuusNrNCfh1HBd1dddcNF+Cx0xanNX7+4Xm5h+dBtjyDlPbc/tb8Ekg==}
+  '@dataroadinc/versioning@0.0.6':
+    resolution: {integrity: sha512-PYC9NabKcx8IPK6aCpVhezHbWlm0USTNefeefLAY95RemWQcomUkHF3ndPuK66hcMDlzAt02nz56efmf4sQeDg==}
     engines: {node: '>=22.0.0', pnpm: '>=10.0.0'}
     hasBin: true
 
@@ -3618,7 +3618,7 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@dataroadinc/versioning@0.0.1': {}
+  '@dataroadinc/versioning@0.0.6': {}
 
   '@edge-runtime/format@2.2.1': {}
 
