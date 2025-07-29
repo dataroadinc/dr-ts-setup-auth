@@ -27,8 +27,12 @@ for their applications across multiple cloud providers.
 
 ## Installation
 
+> **Recommended:** Install as a devDependency unless you need to use the programmatic API at runtime.
+
+### As a devDependency (CLI usage only)
+
 ```bash
-npm install @dataroadinc/setup-auth
+npm install --save-dev @dataroadinc/setup-auth
 ```
 
 or with pnpm:
@@ -36,6 +40,22 @@ or with pnpm:
 ```bash
 pnpm add -D @dataroadinc/setup-auth
 ```
+
+### As a regular dependency (if using programmatic API)
+
+If you need to use the programmatic API in your application code (e.g., for webhook handlers), install as a regular dependency:
+
+```bash
+npm install @dataroadinc/setup-auth
+```
+
+or with pnpm:
+
+```bash
+pnpm add @dataroadinc/setup-auth
+```
+
+> **Use as a devDependency** if you only use the CLI or scripts in CI/CD, not in your app's runtime code. If you import it in your application code, use a regular dependency.
 
 ## Quick Start
 
