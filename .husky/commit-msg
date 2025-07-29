@@ -1,4 +1,17 @@
 #!/usr/bin/env sh
 
 echo "Running commitlint on commit message..."
-pnpm exec commitlint --edit "${1}" 
+pnpm exec commitlint --edit "${1}"
+
+echo "Running format check..."
+pnpm format:check
+
+echo "Running lint..."
+pnpm lint
+
+echo "Building package..."
+pnpm build
+
+echo "Running tests..."
+pnpm test
+
