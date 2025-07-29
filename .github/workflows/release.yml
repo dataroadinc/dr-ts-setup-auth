@@ -1,4 +1,4 @@
-name: Tag and Release on PR Merge
+name: Release
 on:
     pull_request:
         types: [closed]
@@ -44,10 +44,6 @@ jobs:
               run: pnpm run build
             - name: Generate changelog
               run: pnpm run generate-changelog
-            - name: Publish to NPM
-              run: npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
             - name: Create GitHub Release
               uses: softprops/action-gh-release@v2
               with:

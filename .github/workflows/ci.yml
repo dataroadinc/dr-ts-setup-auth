@@ -76,7 +76,16 @@ jobs:
             - name: Update package.json version
               run: pnpm version:current
 
+            - name: Generate changelog
+              run: pnpm run generate-changelog
+
+            - name: Remove CHANGELOG.md from .gitignore for npm publish
+              run: sed -i '/CHANGELOG.md/d' .gitignore
+
             - name: Publish to NPM
               run: npm publish --access public
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Restore .gitignore
+              run: echo "CHANGELOG.md" >> .gitignore
