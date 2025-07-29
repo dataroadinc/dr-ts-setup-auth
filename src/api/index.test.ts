@@ -41,7 +41,7 @@ describe("SetupAuthAPI", () => {
 
   beforeEach(() => {
     // Reset the singleton instance
-    ;(SetupAuthAPI as any).instance = null
+    ;(SetupAuthAPI as unknown as { instance: SetupAuthAPI | null }).instance = null
     api = SetupAuthAPI.getInstance()
   })
 
@@ -219,7 +219,7 @@ describe("SetupAuthAPI", () => {
 describe("Convenience functions", () => {
   beforeEach(() => {
     // Reset the singleton instance
-    ;(SetupAuthAPI as any).instance = null
+    ;(SetupAuthAPI as unknown as { instance: SetupAuthAPI | null }).instance = null
   })
 
   it("should export registerCallbackUrls function", async () => {
