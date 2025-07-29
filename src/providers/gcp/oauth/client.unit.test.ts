@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest"
 import { GcpOAuthWebClientManager } from "./client.js"
 
 class MockGcpCloudCliClient {
-  async run(args: string[], expectJson: boolean): Promise<unknown> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async run(args: string[], _expectJson: boolean): Promise<unknown> {
     // Check if this is a create command that should fail
     if (args.includes("create") && args.some(arg => arg.includes("fail"))) {
       throw new Error("gcloud error: creation failed")
