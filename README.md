@@ -10,8 +10,8 @@
 [![pnpm](https://img.shields.io/badge/pnpm-10.10.0-orange.svg)](https://pnpm.io/)
 
 CLI tool and programmatic API for automated OAuth setup across cloud platforms.
-This package helps developers and administrators set up OAuth authentication
-for their applications across multiple cloud providers.
+This package helps developers and administrators set up OAuth authentication for
+their applications across multiple cloud providers.
 
 ## Features
 
